@@ -1,5 +1,5 @@
 import { AppNavigation } from '@/components/app-navigation';
-import AuthNavigation from '@/components/auth-navigation';
+import { AuthNavigation } from '@/components/auth-navigation';
 import { Head } from '@inertiajs/react';
 
 export default function AuthLayout({ children, title }: { children: React.ReactNode; title?: string }) {

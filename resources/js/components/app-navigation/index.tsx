@@ -1,8 +1,9 @@
+import ApplicationLogo from '@/components/application-logo';
+import { Separator } from '@/components/ui/separator';
 import { PageProps } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { NavigationLink } from './app-navigation-link';
-import ApplicationLogo from './application-logo';
-import { Separator } from './ui/separator';
+import { AppNavigationDropdown } from './dropdown';
+import { AppNavigationLink } from './link';
 
 export const AppNavigation = () => {
     const { auth } = usePage<PageProps>().props;
@@ -14,22 +15,25 @@ export const AppNavigation = () => {
                     <ApplicationLogo className='block h-9 w-auto fill-current text-gray-800' />
                 </Link>
                 <div className='flex items-center gap-2'>
-                    <NavigationLink href={route('home')}>Home</NavigationLink>
+                    <AppNavigationLink href={route('home')} active={route().current('home')}>
+                        Home
+                    </AppNavigationLink>
 
                     <Separator orientation='vertical' className='mx-2 h-8 w-[1px] shrink-0 bg-slate-500/20' />
 
                     {auth.user ? (
                         <>
-                            <NavigationLink href={route('dashboard')}>Dashboard</NavigationLink>
+                            {/* <NavigationLink href={route('dashboard')}>Dashboard</NavigationLink>
                             <NavigationLink href={route('profile.edit')}>Profile</NavigationLink>
                             <NavigationLink href={route('logout')} as='button' method='post'>
                                 Logout
-                            </NavigationLink>
+                            </NavigationLink> */}
+                            <AppNavigationDropdown />
                         </>
                     ) : (
                         <>
-                            <NavigationLink href={route('login')}>Login</NavigationLink>
-                            <NavigationLink href={route('register')}>Register</NavigationLink>
+                            <AppNavigationLink href={route('login')}>Login</AppNavigationLink>
+                            <AppNavigationLink href={route('register')}>Register</AppNavigationLink>
                         </>
                     )}
                 </div>

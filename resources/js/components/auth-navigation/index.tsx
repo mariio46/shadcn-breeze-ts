@@ -1,6 +1,6 @@
-import AuthNavigationLink from './auth-navigation-link';
+import { AuthNavigationLink } from './link';
 
-export default function AuthNavigation() {
+export const AuthNavigation = (): JSX.Element => {
     return (
         <nav className='relative after:absolute after:bottom-[0.5px] after:left-0 after:right-0 after:top-auto after:h-px '>
             <div className='hide-scrollbar relative z-20 mx-auto block max-w-screen-2xl overflow-x-auto px-4 sm:px-6'>
@@ -15,4 +15,4 @@ export default function AuthNavigation() {
             </div>
         </nav>
     );
-}
+};

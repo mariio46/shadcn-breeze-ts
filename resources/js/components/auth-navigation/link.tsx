@@ -1,13 +1,12 @@
 import { cn } from '@/lib/utils/tailwind-merge';
-import { InertiaLinkProps, Link } from '@inertiajs/react';
+import type { ActiveProps } from '@/types/active';
+import { Link, type InertiaLinkProps } from '@inertiajs/react';
 
-export default function AuthNavigationLink({
-    active,
-    className,
-    children,
-    ...props
-}: InertiaLinkProps & { active?: boolean }) {
+type AuthNavigationLinkProps = InertiaLinkProps & ActiveProps;
+
+export const AuthNavigationLink = ({ active, className, children, ...props }: AuthNavigationLinkProps): JSX.Element => {
     const isActive: string = active ? 'text-foreground border-foreground' : 'text-foreground/70 border-transparent';
+
     return (
         <Link
             className={cn(
@@ -19,4 +18,4 @@ export default function AuthNavigationLink({
             <span className='-mx-3 rounded px-3 py-2 transition duration-200 group-hover:bg-accent'>{children}</span>
         </Link>
     );
-}
+};

@@ -1,9 +1,9 @@
+import { Button } from '@/components/ui/button';
 import GuestLayout from '@/layouts/guest-layout';
-import PrimaryButton from '@/components/primary-button';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
 
-export default function VerifyEmail({ status }: { status?: string }) {
+const VerifyEmail = ({ status }: { status?: string }) => {
     const { post, processing } = useForm({});
 
     const submit: FormEventHandler = (e) => {
@@ -29,7 +29,7 @@ export default function VerifyEmail({ status }: { status?: string }) {
 
             <form onSubmit={submit}>
                 <div className='mt-4 flex items-center justify-between'>
-                    <PrimaryButton disabled={processing}>Resend Verification Email</PrimaryButton>
+                    <Button disabled={processing}>Resend Verification Email</Button>
 
                     <Link
                         href={route('logout')}
@@ -42,6 +42,8 @@ export default function VerifyEmail({ status }: { status?: string }) {
             </form>
         </>
     );
-}
+};
 
 VerifyEmail.layout = (page: React.ReactNode) => <GuestLayout children={page} />;
+
+export default VerifyEmail;

@@ -1,13 +1,14 @@
-import { HTMLAttributes } from 'react';
+import { cn } from '@/lib/utils/tailwind-merge';
+import React from 'react';
 
-export default function InputError({
-    message,
-    className = '',
-    ...props
-}: HTMLAttributes<HTMLParagraphElement> & { message?: string }) {
+interface InputErrorType extends React.HTMLAttributes<HTMLParagraphElement> {
+    message?: string;
+}
+
+export const InputError = ({ message, className, ...props }: InputErrorType) => {
     return message ? (
-        <p {...props} className={'text-sm text-red-600 ' + className}>
+        <p className={cn('text-sm text-red-600', className)} {...props}>
             {message}
         </p>
     ) : null;
-}
+};

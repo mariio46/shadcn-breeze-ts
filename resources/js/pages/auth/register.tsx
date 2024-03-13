@@ -1,12 +1,12 @@
-import { useEffect, FormEventHandler } from 'react';
-import InputError from '@/components/input-error';
-import InputLabel from '@/components/input-label';
-import PrimaryButton from '@/components/primary-button';
-import TextInput from '@/components/text-input';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { InputError } from '@/components/input-error';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import GuestLayout from '@/layouts/guest-layout';
+import { Head, Link, useForm } from '@inertiajs/react';
+import { FormEventHandler, useEffect } from 'react';
 
-export default function Register() {
+const Register = () => {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
@@ -32,26 +32,26 @@ export default function Register() {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor='name' value='Name' />
+                    <Label htmlFor='name'>Name</Label>
 
-                    <TextInput
+                    <Input
                         id='name'
                         name='name'
                         value={data.name}
                         className='mt-1 block w-full'
                         autoComplete='name'
-                        isFocused={true}
+                        autoFocus
                         onChange={(e) => setData('name', e.target.value)}
                         required
                     />
 
-                    <InputError message={errors.name} className='mt-2' />
+                    <InputError message={errors.name} className='mt-1' />
                 </div>
 
                 <div className='mt-4'>
-                    <InputLabel htmlFor='email' value='Email' />
+                    <Label htmlFor='email'>Email</Label>
 
-                    <TextInput
+                    <Input
                         id='email'
                         type='email'
                         name='email'
@@ -62,13 +62,13 @@ export default function Register() {
                         required
                     />
 
-                    <InputError message={errors.email} className='mt-2' />
+                    <InputError message={errors.email} className='mt-1' />
                 </div>
 
                 <div className='mt-4'>
-                    <InputLabel htmlFor='password' value='Password' />
+                    <Label htmlFor='password'>Password</Label>
 
-                    <TextInput
+                    <Input
                         id='password'
                         type='password'
                         name='password'
@@ -79,13 +79,13 @@ export default function Register() {
                         required
                     />
 
-                    <InputError message={errors.password} className='mt-2' />
+                    <InputError message={errors.password} className='mt-1' />
                 </div>
 
                 <div className='mt-4'>
-                    <InputLabel htmlFor='password_confirmation' value='Confirm Password' />
+                    <Label htmlFor='password_confirmation'>Confirm Password</Label>
 
-                    <TextInput
+                    <Input
                         id='password_confirmation'
                         type='password'
                         name='password_confirmation'
@@ -96,24 +96,26 @@ export default function Register() {
                         required
                     />
 
-                    <InputError message={errors.password_confirmation} className='mt-2' />
+                    <InputError message={errors.password_confirmation} className='mt-1' />
                 </div>
 
                 <div className='mt-4 flex items-center justify-between'>
-                    <Link href={route('home')} className='text-sm'>
+                    <Link href={route('home')} className='text-sm text-muted-foreground hover:text-foreground'>
                         Home
                     </Link>
                     <div className='flex items-center justify-end gap-2'>
-                        <Link href={route('login')} className='text-sm'>
+                        <Link href={route('login')} className='text-sm text-muted-foreground hover:text-foreground'>
                             Login
                         </Link>
 
-                        <PrimaryButton disabled={processing}>Register</PrimaryButton>
+                        <Button disabled={processing}>Register</Button>
                     </div>
                 </div>
             </form>
         </>
     );
-}
+};
 
 Register.layout = (page: React.ReactNode) => <GuestLayout children={page} />;
+
+export default Register;

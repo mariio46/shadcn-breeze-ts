@@ -1,12 +1,12 @@
 import { useEffect, FormEventHandler } from 'react';
-import InputError from '@/components/input-error';
-import InputLabel from '@/components/input-label';
-import PrimaryButton from '@/components/primary-button';
-import TextInput from '@/components/text-input';
+import { InputError } from '@/components/input-error';
 import { Head, useForm } from '@inertiajs/react';
 import GuestLayout from '@/layouts/guest-layout';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
-export default function ResetPassword({ token, email }: { token: string; email: string }) {
+const ResetPassword = ({ token, email }: { token: string; email: string }) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         token: token,
         email: email,
@@ -32,9 +32,9 @@ export default function ResetPassword({ token, email }: { token: string; email: 
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor='email' value='Email' />
+                    <Label htmlFor='email'>Email</Label>
 
-                    <TextInput
+                    <Input
                         id='email'
                         type='email'
                         name='email'
@@ -44,20 +44,20 @@ export default function ResetPassword({ token, email }: { token: string; email: 
                         onChange={(e) => setData('email', e.target.value)}
                     />
 
-                    <InputError message={errors.email} className='mt-2' />
+                    <InputError message={errors.email} className='mt-0.5' />
                 </div>
 
                 <div className='mt-4'>
-                    <InputLabel htmlFor='password' value='Password' />
+                    <Label htmlFor='password'>Password</Label>
 
-                    <TextInput
+                    <Input
                         id='password'
                         type='password'
                         name='password'
                         value={data.password}
                         className='mt-1 block w-full'
                         autoComplete='new-password'
-                        isFocused={true}
+                        autoFocus
                         onChange={(e) => setData('password', e.target.value)}
                     />
 
@@ -65,9 +65,9 @@ export default function ResetPassword({ token, email }: { token: string; email: 
                 </div>
 
                 <div className='mt-4'>
-                    <InputLabel htmlFor='password_confirmation' value='Confirm Password' />
+                    <Label htmlFor='password_confirmation'>Confirm Password</Label>
 
-                    <TextInput
+                    <Input
                         type='password'
                         name='password_confirmation'
                         value={data.password_confirmation}
@@ -80,13 +80,15 @@ export default function ResetPassword({ token, email }: { token: string; email: 
                 </div>
 
                 <div className='mt-4 flex items-center justify-end'>
-                    <PrimaryButton className='ms-4' disabled={processing}>
+                    <Button className='ms-4' disabled={processing}>
                         Reset Password
-                    </PrimaryButton>
+                    </Button>
                 </div>
             </form>
         </>
     );
-}
+};
 
 ResetPassword.layout = (page: React.ReactNode) => <GuestLayout children={page} />;
+
+export default ResetPassword;

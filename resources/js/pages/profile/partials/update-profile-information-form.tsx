@@ -1,11 +1,11 @@
-import InputError from '@/components/input-error';
-import InputLabel from '@/components/input-label';
-import PrimaryButton from '@/components/primary-button';
-import TextInput from '@/components/text-input';
-import { Link, useForm, usePage } from '@inertiajs/react';
-import { Transition } from '@headlessui/react';
-import { FormEventHandler } from 'react';
+import { InputError } from '@/components/input-error';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { PageProps } from '@/types';
+import { Transition } from '@headlessui/react';
+import { Link, useForm, usePage } from '@inertiajs/react';
+import { FormEventHandler } from 'react';
 
 export default function UpdateProfileInformation({
     mustVerifyEmail,
@@ -41,15 +41,15 @@ export default function UpdateProfileInformation({
 
             <form onSubmit={submit} className='mt-6 space-y-6'>
                 <div>
-                    <InputLabel htmlFor='name' value='Name' />
+                    <Label htmlFor='name'>Name</Label>
 
-                    <TextInput
+                    <Input
                         id='name'
                         className='mt-1 block w-full'
                         value={data.name}
                         onChange={(e) => setData('name', e.target.value)}
                         required
-                        isFocused
+                        autoFocus
                         autoComplete='name'
                     />
 
@@ -57,9 +57,9 @@ export default function UpdateProfileInformation({
                 </div>
 
                 <div>
-                    <InputLabel htmlFor='email' value='Email' />
+                    <Label htmlFor='email'>Email</Label>
 
-                    <TextInput
+                    <Input
                         id='email'
                         type='email'
                         className='mt-1 block w-full'
@@ -94,7 +94,7 @@ export default function UpdateProfileInformation({
                 )}
 
                 <div className='flex items-center gap-4'>
-                    <PrimaryButton disabled={processing}>Save</PrimaryButton>
+                    <Button disabled={processing}>Save</Button>
 
                     <Transition
                         show={recentlySuccessful}

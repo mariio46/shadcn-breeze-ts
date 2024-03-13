@@ -1,13 +1,13 @@
 import GuestLayout from '@/layouts/guest-layout';
-import Checkbox from '@/components/checkbox';
-import InputError from '@/components/input-error';
-import InputLabel from '@/components/input-label';
-import PrimaryButton from '@/components/primary-button';
-import TextInput from '@/components/text-input';
+import { InputError } from '@/components/input-error';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { FormEventHandler, useEffect } from 'react';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 
-export default function Login({ status, canResetPassword }: { status?: string; canResetPassword: boolean }) {
+const Login = ({ status, canResetPassword }: { status?: string; canResetPassword: boolean }) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
@@ -28,32 +28,32 @@ export default function Login({ status, canResetPassword }: { status?: string; c
 
     return (
         <>
-            <Head title='Log in' />
+            <Head title='Login' />
 
             {status && <div className='mb-4 text-sm font-medium text-green-600'>{status}</div>}
 
             <form onSubmit={submit} className='w-full'>
                 <div>
-                    <InputLabel htmlFor='email' value='Email' />
+                    <Label htmlFor='email'>Email</Label>
 
-                    <TextInput
+                    <Input
                         id='email'
                         type='email'
                         name='email'
                         value={data.email}
                         className='mt-1 block w-full'
                         autoComplete='username'
-                        isFocused={true}
                         onChange={(e) => setData('email', e.target.value)}
+                        autoFocus
                     />
 
-                    <InputError message={errors.email} className='mt-2' />
+                    <InputError message={errors.email} className='mt-1' />
                 </div>
 
                 <div className='mt-4'>
-                    <InputLabel htmlFor='password' value='Password' />
+                    <Label htmlFor='password'>Password</Label>
 
-                    <TextInput
+                    <Input
                         id='password'
                         type='password'
                         name='password'
@@ -63,7 +63,7 @@ export default function Login({ status, canResetPassword }: { status?: string; c
                         onChange={(e) => setData('password', e.target.value)}
                     />
 
-                    <InputError message={errors.password} className='mt-2' />
+                    <InputError message={errors.password} className='mt-1' />
                 </div>
 
                 <div className='mt-4 block'>
@@ -72,14 +72,14 @@ export default function Login({ status, canResetPassword }: { status?: string; c
                             <Checkbox
                                 name='remember'
                                 checked={data.remember}
-                                onChange={(e) => setData('remember', e.target.checked)}
+                                onCheckedChange={(e: boolean) => setData('remember', e)}
                             />
-                            <span className='ms-2 text-sm text-gray-600'>Remember me</span>
+                            <span className='ms-2 select-none text-sm text-muted-foreground'>Remember me</span>
                         </label>
                         {canResetPassword && (
                             <Link
                                 href={route('password.request')}
-                                className='rounded-md text-sm text-gray-600 hover:text-gray-900 hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
+                                className='rounded-md text-sm text-muted-foreground hover:text-foreground hover:underline focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2'>
                                 Forgot your password?
                             </Link>
                         )}
@@ -87,19 +87,21 @@ export default function Login({ status, canResetPassword }: { status?: string; c
                 </div>
 
                 <div className='mt-4 flex items-center justify-between'>
-                    <Link href={route('home')} className='text-sm'>
+                    <Link href={route('home')} className='text-sm text-muted-foreground hover:text-foreground'>
                         Home
                     </Link>
                     <div className='flex items-center justify-end gap-2'>
-                        <Link href={route('register')} className='text-sm'>
+                        <Link href={route('register')} className='text-sm text-muted-foreground hover:text-foreground'>
                             Register
                         </Link>
-                        <PrimaryButton disabled={processing}>Login</PrimaryButton>
+                        <Button disabled={processing}>Login</Button>
                     </div>
                 </div>
             </form>
         </>
     );
-}
+};
 
 Login.layout = (page: React.ReactNode) => <GuestLayout children={page} />;
+
+export default Login;

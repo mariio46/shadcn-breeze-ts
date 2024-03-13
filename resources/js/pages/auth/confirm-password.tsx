@@ -1,12 +1,12 @@
 import { useEffect, FormEventHandler } from 'react';
-import InputError from '@/components/input-error';
-import InputLabel from '@/components/input-label';
-import PrimaryButton from '@/components/primary-button';
-import TextInput from '@/components/text-input';
+import { InputError } from '@/components/input-error';
 import { Head, useForm } from '@inertiajs/react';
 import GuestLayout from '@/layouts/guest-layout';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
-export default function ConfirmPassword() {
+const ConfirmPassword = () => {
     const { data, setData, post, processing, errors, reset } = useForm({
         password: '',
     });
@@ -33,29 +33,31 @@ export default function ConfirmPassword() {
 
             <form onSubmit={submit}>
                 <div className='mt-4'>
-                    <InputLabel htmlFor='password' value='Password' />
+                    <Label htmlFor='password'>Password</Label>
 
-                    <TextInput
+                    <Input
                         id='password'
                         type='password'
                         name='password'
                         value={data.password}
                         className='mt-1 block w-full'
-                        isFocused={true}
+                        autoFocus
                         onChange={(e) => setData('password', e.target.value)}
                     />
 
-                    <InputError message={errors.password} className='mt-2' />
+                    <InputError message={errors.password} className='mt-0.5' />
                 </div>
 
                 <div className='mt-4 flex items-center justify-end'>
-                    <PrimaryButton className='ms-4' disabled={processing}>
+                    <Button className='ms-4' disabled={processing}>
                         Confirm
-                    </PrimaryButton>
+                    </Button>
                 </div>
             </form>
         </>
     );
-}
+};
 
 ConfirmPassword.layout = (page: React.ReactNode) => <GuestLayout children={page} />;
+
+export default ConfirmPassword;

@@ -7,29 +7,27 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { User } from '@/types';
 import { Link } from '@inertiajs/react';
 import { Icon } from '../icon';
 import { AppNavigationDropdownProfile } from './dropdown-profile';
 
-export const AppNavigationDropdown = (): JSX.Element => {
+export const AppNavigationDropdown = ({ user }: { user: User }): JSX.Element => {
     return (
         <>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Avatar className='size-9 cursor-pointer'>
-                        <AvatarImage src='https://www.gravatar.com/avatar/4822b64d3795ec945b7f0fc8b57ba824?s=200&d=mp' />
-                        <AvatarFallback>CN</AvatarFallback>
+                        <AvatarImage src={user.avatar} alt={user.name} />
+                        <AvatarFallback>{user.fallback}</AvatarFallback>
                     </Avatar>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align='end' className='mt-2 w-full min-w-[8rem]'>
+                <DropdownMenuContent align='end' className='w-full min-w-[8rem]'>
                     <DropdownMenuLabel>
-                        <AppNavigationDropdownProfile name='Mario' email='mariomad2296@gmail.com'>
+                        <AppNavigationDropdownProfile name={user.name} email={user.email}>
                             <Avatar className='size-8'>
-                                <AvatarImage
-                                    src='https://www.gravatar.com/avatar/4822b64d3795ec945b7f0fc8b57ba824?s=200&d=mp'
-                                    alt='M'
-                                />
-                                <AvatarFallback>M</AvatarFallback>
+                                <AvatarImage src={user.avatar} alt={user.name} />
+                                <AvatarFallback>{user.fallback}</AvatarFallback>
                             </Avatar>
                         </AppNavigationDropdownProfile>
                     </DropdownMenuLabel>
@@ -41,7 +39,7 @@ export const AppNavigationDropdown = (): JSX.Element => {
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                        <Link href={route('profile.edit')}>
+                        <Link href={route('settings.account')}>
                             <Icon name='IconSettings' className='mr-1.5 stroke-[1.3]' />
                             Settings
                         </Link>

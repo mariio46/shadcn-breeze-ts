@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { cn } from '@/lib/utils/tailwind-merge';
 import { ButtonProps, buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils/tailwind-merge';
 import { IconChevronLeft, IconChevronRight, IconPointFilled } from '@tabler/icons-react';
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
@@ -77,9 +77,9 @@ PaginationEllipsis.displayName = 'PaginationEllipsis';
 export {
     Pagination,
     PaginationContent,
-    PaginationLink,
-    PaginationItem,
-    PaginationPrevious,
-    PaginationNext,
     PaginationEllipsis,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
 };

@@ -1,5 +1,5 @@
+import { fontFamily } from 'tailwindcss/defaultTheme';
 import plugin from 'tailwindcss/plugin';
-import defaultTheme from 'tailwindcss/defaultTheme';
 
 export const shadcnPlugin = plugin(
     function ({ addBase }) {
@@ -104,7 +104,7 @@ export const shadcnPlugin = plugin(
                     sm: 'calc(var(--radius) - 4px)',
                 },
                 fontFamily: {
-                    sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                    sans: ['Figtree', ...fontFamily.sans],
                 },
                 keyframes: {
                     'accordion-down': {

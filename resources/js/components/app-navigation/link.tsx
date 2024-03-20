@@ -1,7 +1,7 @@
+import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils/tailwind-merge';
 import type { ActiveProps } from '@/types/active';
 import { Link, type InertiaLinkProps } from '@inertiajs/react';
-import { buttonVariants } from '@/components/ui/button';
 
 type AppNavigationLinkProps = InertiaLinkProps & ActiveProps;
 

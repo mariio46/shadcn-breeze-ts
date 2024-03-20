@@ -1,9 +1,9 @@
-import * as React from 'react';
 import { type DialogProps } from '@radix-ui/react-dialog';
 import { Command as CommandPrimitive } from 'cmdk';
+import * as React from 'react';
 
-import { cn } from '@/lib/utils/tailwind-merge';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { cn } from '@/lib/utils/tailwind-merge';
 import { IconSearch } from '@tabler/icons-react';
 
 const Command = React.forwardRef<
@@ -122,11 +122,11 @@ CommandShortcut.displayName = 'CommandShortcut';
 export {
     Command,
     CommandDialog,
-    CommandInput,
-    CommandList,
     CommandEmpty,
     CommandGroup,
+    CommandInput,
     CommandItem,
-    CommandShortcut,
+    CommandList,
     CommandSeparator,
+    CommandShortcut,
 };

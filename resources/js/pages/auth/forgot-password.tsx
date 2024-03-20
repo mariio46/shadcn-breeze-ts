@@ -1,9 +1,9 @@
-import GuestLayout from '@/layouts/guest-layout';
 import { InputError } from '@/components/input-error';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import GuestLayout from '@/layouts/guest-layout';
 import { Head, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 
 const ForgotPassword = ({ status }: { status?: string }) => {
     const { data, setData, post, processing, errors } = useForm({

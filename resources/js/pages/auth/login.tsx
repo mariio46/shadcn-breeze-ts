@@ -1,11 +1,11 @@
-import GuestLayout from '@/layouts/guest-layout';
 import { InputError } from '@/components/input-error';
-import { Head, Link, useForm } from '@inertiajs/react';
-import { FormEventHandler, useEffect } from 'react';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import GuestLayout from '@/layouts/guest-layout';
+import { Head, Link, useForm } from '@inertiajs/react';
+import { FormEventHandler, useEffect } from 'react';
 
 const Login = ({ status, canResetPassword }: { status?: string; canResetPassword: boolean }) => {
     const { data, setData, post, processing, errors, reset } = useForm({

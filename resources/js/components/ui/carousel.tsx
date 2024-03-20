@@ -1,8 +1,8 @@
-import * as React from 'react';
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react';
+import * as React from 'react';
 
-import { cn } from '@/lib/utils/tailwind-merge';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils/tailwind-merge';
 import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
 
 type CarouselApi = UseEmblaCarouselType[1];
@@ -221,4 +221,4 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
 );
 CarouselNext.displayName = 'CarouselNext';
 
-export { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext };
+export { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi };

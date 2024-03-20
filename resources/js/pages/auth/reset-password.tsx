@@ -1,10 +1,10 @@
-import { useEffect, FormEventHandler } from 'react';
 import { InputError } from '@/components/input-error';
-import { Head, useForm } from '@inertiajs/react';
-import GuestLayout from '@/layouts/guest-layout';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import GuestLayout from '@/layouts/guest-layout';
+import { Head, useForm } from '@inertiajs/react';
+import { FormEventHandler, useEffect } from 'react';
 
 const ResetPassword = ({ token, email }: { token: string; email: string }) => {
     const { data, setData, post, processing, errors, reset } = useForm({

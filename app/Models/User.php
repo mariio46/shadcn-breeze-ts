@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];
@@ -42,4 +43,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function avatar(?int $size = 150): string
+    {
+        $hashed_email = hash(algo: 'sha256', data: $this->email);
+
+        return "https://www.gravatar.com/avatar/{$hashed_email}?s={$size}&d=mp";
+    }
 }

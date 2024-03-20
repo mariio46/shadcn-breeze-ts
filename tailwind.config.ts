@@ -1,5 +1,5 @@
-import { shadcnPreset } from './resources/js/lib/shadcn/preset';
 import type { Config } from 'tailwindcss';
+import { shadcnPreset } from './resources/js/lib/shadcn/preset';
 
 const config = {
     darkMode: 'class',
